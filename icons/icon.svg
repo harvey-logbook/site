@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="2"/></pattern>
+    <clipPath id="page"><rect x="140" y="100" width="232" height="312" rx="22"/></clipPath>
+  </defs>
+  <rect id="bg" width="512" height="512" rx="112" fill="#2348b5"/>
+  <rect id="bggrid" width="512" height="512" rx="112" fill="url(#grid)"/>
+  <g id="mark">
+    <rect x="140" y="100" width="232" height="312" rx="22" fill="#fff"/>
+    <rect x="140" y="100" width="44" height="312" fill="#d5dbe4" clip-path="url(#page)"/>
+    <path d="M214 196H330M214 256H330M214 316H284" stroke="#2348b5" stroke-width="20" stroke-linecap="round"/>
+    <path d="M316 100V178L337 160L358 178V100Z" fill="#fab219"/>
+  </g>
+</svg>

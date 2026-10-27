@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.googleapis.com https://accounts.google.com https://oauth2.googleapis.com http://localhost:* http://127.0.0.1:* https://*.ts.net; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Harvey's Logbook</title>
+<meta name="description" content="Log work, plan days and forecast deadlines across every project.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171b23" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="bench">
+  <div class="wrap">
+    <div class="bench-top">
+      <div class="brand">
+        <h1>Logbook</h1>
+        <p class="eyebrow" id="termLabel"></p>
+      </div>
+      <button type="button" class="sync-chip" id="syncChip" data-act="sync" hidden><span class="dot" aria-hidden="true"></span><span class="sync-txt">Sync</span></button>
+      <div class="timer-pill" id="timerPill" hidden>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="tt" id="timerTxt"></span>
+        <button type="button" class="btn small primary" id="timerStop">Stop and log</button>
+      </div>
+    </div>
+    <form id="logForm" autocomplete="off">
+      <div class="log-row">
+        <label for="logText" class="sr">What did you work on, and for how long?</label>
+        <textarea id="logText" rows="1" placeholder="e.g. finished gearbox housing CAD, two and a half hours"></textarea>
+        <div class="log-actions">
+          <button type="button" class="btn" id="timerStart" title="Start a timer for the task in the box">Start timer</button>
+          <button type="submit" class="btn primary" id="saveLog">Log it</button>
+        </div>
+      </div>
+    </form>
+    <div class="preview" id="preview"></div>
+  </div>
+</header>
+<nav class="tabs-band" aria-label="Views">
+  <div class="wrap tabs" role="tablist" id="tabs">
+    <button class="tab" role="tab" id="tab-today" data-view="today" aria-selected="true">Today</button>
+    <button class="tab" role="tab" id="tab-tasks" data-view="tasks" aria-selected="false">Tasks<span class="count" id="taskCount"></span></button>
+    <button class="tab" role="tab" id="tab-timeline" data-view="timeline" aria-selected="false">Timeline</button>
+    <button class="tab" role="tab" id="tab-insights" data-view="insights" aria-selected="false">Insights</button>
+    <button class="tab" role="tab" id="tab-analyze" data-view="analyze" aria-selected="false">Analyze</button>
+    <button class="tab" role="tab" id="tab-setup" data-view="setup" aria-selected="false">Setup</button>
+  </div>
+</nav>
+<main class="wrap" id="view" role="tabpanel">
+  <p class="loading">Opening your logbook…</p>
+</main>
+<div id="drawerRoot"></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div class="tip" id="tip" hidden></div>
+
+<script src="config.js"></script>
+<script src="js/synccore.js"></script>
+<script src="js/platform.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/logparse.js"></script>
+<script src="js/dayplan.js"></script>
+<script src="js/localai.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
